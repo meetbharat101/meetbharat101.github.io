@@ -224,17 +224,6 @@
 
         .btn-outline:hover { border-color: var(--primary); background: rgba(37, 99, 235, 0.1); }
 
-        .hero-image { flex-shrink: 0; }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--border);
-            box-shadow: 0 0 60px rgba(37, 99, 235, 0.15);
-        }
-
         /* Sections */
         section { padding: 5rem 2rem; }
 
@@ -800,24 +789,25 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive */
+        /* Responsive - Tablets & small screens */
         @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 5rem 1.5rem 3rem;
+            }
+
             .hero-content {
-                flex-direction: column-reverse;
+                flex-direction: column;
                 text-align: center;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .hero-text h1 { font-size: 2.25rem; }
-            .hero-text .tagline { margin: 0 auto 1.5rem; }
-            .hero-text .headline { text-align: center; }
-            .hero-text .stats { justify-content: center; }
+            .hero-text .tagline { margin: 0 auto 1.5rem; font-size: 1rem; }
+            .hero-text .headline { text-align: center; font-size: 1rem; }
+            .hero-text .stats { justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+            .hero-text .stat-item h3 { font-size: 1.5rem; }
             .hero-buttons { justify-content: center; }
-
-            .hero-image img {
-                width: 200px;
-                height: 200px;
-            }
 
             nav ul { display: none; }
             nav ul.active {
@@ -832,11 +822,73 @@
                 gap: 1rem;
                 border-bottom: 1px solid var(--border);
             }
+            nav ul.active a {
+                font-size: 1rem;
+                padding: 0.5rem 0;
+                display: block;
+            }
 
             .hamburger { display: flex; }
 
             .timeline-header { flex-direction: column; }
             section { padding: 3rem 1.25rem; }
+
+            .section-title { font-size: 1.6rem; }
+            .section-subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
+
+            .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .education-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .cert-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .articles-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .reco-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+            .contact-links { flex-direction: column; align-items: center; gap: 1rem; }
+            .contact-card { min-width: unset; width: 100%; max-width: 320px; }
+
+            .awards-grid { flex-direction: column; align-items: center; }
+            .award-card { min-width: unset; width: 100%; max-width: 320px; }
+
+            .timeline { padding-left: 1.5rem; }
+            .timeline-item { padding-left: 1.5rem; }
+            .timeline-item::before { left: -1.85rem; }
+        }
+
+        /* Responsive - Small phones */
+        @media (max-width: 480px) {
+            .hero { padding: 4.5rem 1rem 2.5rem; }
+            .hero-text h1 { font-size: 1.85rem; }
+            .hero-text .greeting { font-size: 1rem; }
+            .hero-text .headline { font-size: 0.9rem; }
+            .hero-text .tagline { font-size: 0.9rem; }
+            .hero-text .stats { gap: 1rem; }
+            .hero-text .stat-item h3 { font-size: 1.25rem; }
+            .hero-text .stat-item p { font-size: 0.75rem; }
+
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; padding: 0.85rem 1.5rem; }
+
+            section { padding: 2.5rem 1rem; }
+            .section-title { font-size: 1.4rem; }
+
+            nav { padding: 0 1rem; }
+            nav .logo { font-size: 1.1rem; }
+
+            .skill-card { padding: 1.25rem; }
+            .edu-card { padding: 1.25rem; }
+            .cert-item { padding: 1rem; }
+            .service-card { padding: 1.5rem; }
+            .reco-card { padding: 1.5rem; }
+            .reco-card .reco-text { font-size: 0.85rem; }
+
+            .timeline { padding-left: 1rem; }
+            .timeline-item { padding-left: 1rem; margin-bottom: 2rem; }
+            .timeline-item::before { left: -1.35rem; width: 10px; height: 10px; }
+            .timeline-header h3 { font-size: 1.05rem; }
+            .timeline-item li { font-size: 0.85rem; }
+
+            .contact-card { padding: 1.25rem 1.5rem; }
+            footer { padding: 1.5rem 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -902,9 +954,6 @@
                         <i class="fas fa-envelope"></i> Email
                     </a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="profile-pic.png" alt="Bharat Mishra">
             </div>
         </div>
     </section>
@@ -1596,6 +1645,15 @@
     <footer>
         <p>&copy; 2026 Bharat Mishra. All rights reserved. | Languages: English & Hindi</p>
     </footer>
+
+    <script>
+        // Close mobile nav when a link is clicked
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
